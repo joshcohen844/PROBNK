@@ -2,43 +2,636 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="PROBNK provides fiat-to-crypto on-ramp infrastructure, payment orchestration, PSP-style operations, reconciliation and support for regulated iGaming merchants.">
-<meta name="theme-color" content="#f7f5ff">
-<title>PROBNK — Payment Infrastructure for Regulated iGaming</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProBnk — Payment Infrastructure for Global Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#171329;--muted:#706a82;--violet:#7058ff;--deep:#4934c8;--cyan:#79e5ff;--mint:#bdf5df;--line:rgba(54,41,103,.12);--glass:rgba(255,255,255,.72);--shadow:0 28px 75px rgba(67,47,145,.15);--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 10% 10%,rgba(121,229,255,.22),transparent 28%),radial-gradient(circle at 85% 15%,rgba(196,187,255,.34),transparent 30%),radial-gradient(circle at 80% 80%,rgba(189,245,223,.28),transparent 28%),linear-gradient(180deg,#fbfaff,#f5f3fb 52%,#fff);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.22;background-image:linear-gradient(rgba(37,29,66,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(37,29,66,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent 92%)}a{color:inherit;text-decoration:none}.container{width:min(calc(100% - 40px),var(--max));margin:auto}.glass{background:var(--glass);border:1px solid rgba(255,255,255,.85);box-shadow:0 15px 40px rgba(62,43,130,.09);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3.4rem,7vw,6.8rem);line-height:.93;letter-spacing:-.065em;margin-bottom:26px;max-width:980px}h2{font-size:clamp(2.25rem,4.5vw,4.4rem);line-height:1;letter-spacing:-.05em;margin-bottom:18px}h3{font-size:1.18rem;letter-spacing:-.02em}p{color:var(--muted);line-height:1.75}.gradient{color:transparent;background:linear-gradient(110deg,#3e2ab2 8%,#7b61ff 48%,#1f89a7 96%);-webkit-background-clip:text;background-clip:text}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 13px;border-radius:999px;color:var(--deep);font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;background:rgba(112,88,255,.08);border:1px solid rgba(112,88,255,.13)}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--cyan));box-shadow:0 0 0 6px rgba(112,88,255,.08)}
-header{position:fixed;top:18px;left:0;right:0;z-index:50}.nav{min-height:72px;border-radius:999px;padding:0 14px 0 20px;display:flex;align-items:center;justify-content:space-between;transition:.3s}.nav.scrolled{background:rgba(255,255,255,.92);box-shadow:0 18px 45px rgba(54,42,105,.12)}.brand{display:flex;align-items:center;gap:12px;font-size:1.2rem;font-weight:950;letter-spacing:-.035em}.mark{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#816cff,#3d2a9f);box-shadow:inset 0 1px rgba(255,255,255,.45),0 10px 25px rgba(72,52,190,.25)}.mark svg{width:24px}.links{display:flex;align-items:center;gap:26px;font-size:.92rem;font-weight:750;color:#4c465d}.links a:not(.cta){position:relative}.links a:not(.cta):after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:2px;border-radius:999px;background:var(--violet);transition:.25s}.links a:hover:after{right:0}.cta,.btn,.btn2{min-height:48px;padding:0 20px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:850;transition:.25s}.cta,.btn{color:#fff;background:linear-gradient(135deg,#7a62ff,#4d36ca);box-shadow:0 14px 30px rgba(82,57,200,.24)}.btn2{background:rgba(255,255,255,.75);border:1px solid var(--line);box-shadow:0 12px 26px rgba(54,42,105,.08)}.cta:hover,.btn:hover,.btn2:hover{transform:translateY(-2px)}.menu{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff}
-.hero{min-height:100vh;padding:150px 0 88px;display:flex;align-items:center;position:relative;isolation:isolate}.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;opacity:.55}.orb{position:absolute;width:560px;aspect-ratio:1;border-radius:50%;right:-120px;top:80px;z-index:-1;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.95),rgba(181,168,255,.55) 26%,rgba(120,219,255,.32) 52%,transparent 70%);animation:float 9s ease-in-out infinite}@keyframes float{50%{transform:translate(-22px,28px) scale(1.04)}}.hero-copy{max-width:980px;position:relative;z-index:2}.hero-copy>p{max-width:760px;font-size:clamp(1.08rem,1.8vw,1.34rem);margin-bottom:34px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}.chips{display:flex;flex-wrap:wrap;gap:12px}.chip{display:inline-flex;align-items:center;gap:9px;padding:10px 14px;border-radius:999px;font-size:.84rem;font-weight:800;color:#504963;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9)}.chip svg{width:17px;color:var(--violet)}.console{position:absolute;right:4%;bottom:7%;width:min(390px,38vw);padding:18px;border-radius:26px;transform:rotate(-2deg);box-shadow:var(--shadow);background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.94);backdrop-filter:blur(20px)}.console-top{display:flex;justify-content:space-between;margin-bottom:14px}.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:rgba(38,28,75,.15)}.live{font-size:.72rem;font-weight:900;color:#23856a;letter-spacing:.1em}.row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:13px 0;border-top:1px solid var(--line);font-size:.82rem}.row span{color:var(--muted)}.signal{display:inline-flex;align-items:center;gap:7px;color:#23856a!important;font-weight:850}.signal:before{content:"";width:7px;height:7px;border-radius:50%;background:#41d6a3;box-shadow:0 0 0 5px rgba(65,214,163,.12)}
-section{padding:112px 0;position:relative}.head{max-width:760px;margin-bottom:44px}.head p{font-size:1.07rem}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 4;min-height:300px;padding:28px;border-radius:24px;position:relative;overflow:hidden;transform-style:preserve-3d;transition:.3s}.card:hover{box-shadow:var(--shadow)}.card.wide{grid-column:span 8;min-height:330px}.card.small{min-height:330px}.icon{width:52px;height:52px;border-radius:17px;display:grid;place-items:center;margin-bottom:24px;color:var(--deep);background:linear-gradient(145deg,rgba(112,88,255,.15),rgba(121,229,255,.18));border:1px solid rgba(112,88,255,.12)}.icon svg{width:26px}.mini-flow{position:absolute;left:24px;right:24px;bottom:24px;display:flex;align-items:center;gap:10px}.node{flex:1;text-align:center;padding:10px 8px;border-radius:13px;font-size:.74rem;font-weight:850;background:rgba(255,255,255,.74);border:1px solid var(--line)}.line{height:2px;flex:.45;background:linear-gradient(90deg,var(--violet),var(--cyan));position:relative;overflow:hidden}.line:after{content:"";position:absolute;width:16px;height:100%;background:#fff;filter:blur(3px);animation:pulse 2.4s linear infinite}@keyframes pulse{from{left:-20px}to{left:100%}}
-.arch{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}.arch-copy{padding-right:28px}.bullets{display:grid;gap:13px;margin-top:28px}.bullet{display:flex;gap:12px;align-items:flex-start;color:#4d465e;line-height:1.55;font-weight:680}.bullet i{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,var(--violet),var(--deep));font-style:normal;font-size:.7rem}.panel{padding:28px;border-radius:32px;min-height:560px;display:grid;place-items:center;overflow:hidden;position:relative}.panel:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(112,88,255,.14),transparent 68%)}.flow{width:100%;display:grid;gap:24px;position:relative;z-index:2}.flow-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.flow-row.center{grid-template-columns:1fr;justify-items:center}.flow-node{min-height:92px;padding:18px;display:flex;align-items:center;gap:12px;border-radius:19px;background:rgba(255,255,255,.84);border:1px solid rgba(62,43,130,.11);box-shadow:0 12px 30px rgba(62,43,130,.08);transition:.25s}.flow-node:hover{transform:translateY(-5px);border-color:rgba(112,88,255,.35)}.flow-node.core{width:min(360px,100%);color:#fff;background:linear-gradient(145deg,#7a62ff,#4c35c5);box-shadow:0 24px 50px rgba(82,57,200,.25)}.flow-icon{width:38px;height:38px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;background:rgba(112,88,255,.1);color:var(--violet);font-weight:900}.core .flow-icon{background:rgba(255,255,255,.16);color:#fff}.flow-node b{display:block;font-size:.86rem;margin-bottom:4px}.flow-node small{color:var(--muted);line-height:1.35}.core small{color:rgba(255,255,255,.72)}.connection{height:42px;width:2px;background:linear-gradient(var(--violet),var(--cyan));margin:-9px auto;position:relative;overflow:hidden}.connection:after{content:"";position:absolute;width:100%;height:12px;background:#fff;filter:blur(2px);animation:vp 2s linear infinite}@keyframes vp{from{top:-14px}to{top:100%}}
-.strip{padding:28px;border-radius:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.metric{padding:18px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric strong{display:block;font-size:1.8rem;letter-spacing:-.04em;margin-bottom:4px}.metric span{font-size:.83rem;color:var(--muted);line-height:1.45}.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.why article{padding:26px;border-radius:24px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.86);box-shadow:0 15px 40px rgba(62,43,130,.09)}.num{display:inline-flex;margin-bottom:34px;font-size:.78rem;font-weight:900;letter-spacing:.12em;color:var(--violet)}
-.contact{padding:52px;border-radius:38px;display:grid;grid-template-columns:1fr .85fr;gap:40px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(circle at 20% 20%,rgba(121,229,255,.22),transparent 30%),radial-gradient(circle at 80% 60%,rgba(189,245,223,.14),transparent 32%),linear-gradient(135deg,#30256f,#6046d5 55%,#3e2a9a);box-shadow:0 40px 90px rgba(55,36,145,.28)}.contact:after{content:"";position:absolute;width:380px;height:380px;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:-120px;top:-140px;box-shadow:0 0 0 40px rgba(255,255,255,.04),0 0 0 80px rgba(255,255,255,.025)}.contact p{color:rgba(255,255,255,.74)}.contact .eyebrow{color:#fff;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.14)}.email{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:850;margin-top:22px}.form{position:relative;z-index:2;padding:24px;border-radius:24px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(16px)}label{display:block;font-size:.75rem;font-weight:850;margin:0 0 7px 4px;color:rgba(255,255,255,.72)}input,textarea{width:100%;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px;outline:0;margin-bottom:14px}input:focus,textarea:focus{border-color:rgba(255,255,255,.65);background:rgba(255,255,255,.14)}input::placeholder,textarea::placeholder{color:rgba(255,255,255,.46)}textarea{min-height:110px;resize:vertical}.submit{width:100%;min-height:50px;border:0;border-radius:14px;cursor:pointer;font-weight:900;color:#3d2c9f;background:#fff;box-shadow:0 14px 30px rgba(16,10,56,.18)}footer{padding:42px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:.84rem}.foot-links{display:flex;gap:18px}.reveal{opacity:0;transform:translateY(28px);transition:.75s}.reveal.visible{opacity:1;transform:none}.glow{position:fixed;width:320px;height:320px;border-radius:50%;pointer-events:none;z-index:-1;opacity:.35;filter:blur(40px);background:radial-gradient(circle,rgba(121,229,255,.28),rgba(112,88,255,.1) 45%,transparent 70%);transform:translate(-50%,-50%)}
-@media(max-width:980px){.console{display:none}.card,.card.wide{grid-column:span 6}.arch{grid-template-columns:1fr}.arch-copy{padding:0}.strip{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.why{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr}}@media(max-width:760px){header{top:10px}.nav{min-height:62px;padding-left:14px}.menu{display:grid;place-items:center}.links{position:absolute;top:72px;left:20px;right:20px;padding:18px;border-radius:22px;flex-direction:column;align-items:stretch;background:rgba(255,255,255,.97);border:1px solid var(--line);box-shadow:var(--shadow);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s}.links.open{opacity:1;pointer-events:auto;transform:none}.links a{padding:10px}h1{font-size:clamp(3rem,15vw,5.2rem)}.hero{padding-top:130px}.card,.card.wide{grid-column:1/-1}.flow-row{grid-template-columns:1fr}.panel{min-height:auto}.strip{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.why{grid-template-columns:1fr}.contact{padding:32px 22px}.foot{flex-direction:column;align-items:flex-start}section{padding:82px 0}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#FFFFFF;
+  --off:#F6F8FF;
+  --ink:#0A0E1A;
+  --ink2:#1C2340;
+  --mid:#4B5472;
+  --muted:#8A93AF;
+  --blue:#0A52FF;
+  --blue2:#1A62FF;
+  --blue-pale:#EEF3FF;
+  --border:#E4E8F2;
+  --border2:#D0D6E8;
+  --green:#059669;
+  --green-pale:#ECFDF5;
+  --shadow-sm:0 1px 3px rgba(10,14,26,0.07),0 1px 2px rgba(10,14,26,0.04);
+  --shadow:0 4px 20px rgba(10,14,26,0.08),0 1px 3px rgba(10,14,26,0.04);
+  --shadow-lg:0 20px 60px rgba(10,14,26,0.1),0 4px 12px rgba(10,14,26,0.05);
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:400;overflow-x:hidden;line-height:1.6}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-l.v{opacity:1;transform:translateX(0)}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-r.v{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:68px;padding:0 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 1px 0 var(--border)}
+.logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);text-decoration:none;letter-spacing:-0.3px}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--mid);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.nav-login{color:var(--ink);font-size:14px;font-weight:500;text-decoration:none;padding:8px 0;transition:color 0.2s}
+.nav-login:hover{color:var(--blue)}
+.nav-cta{background:var(--ink);color:white;padding:9px 22px;border-radius:7px;font-size:14px;font-weight:500;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none}
+.nav-cta:hover{background:var(--ink2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(10,14,26,0.2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--ink);border-radius:2px;display:block;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-nav{display:none;position:fixed;top:68px;left:0;right:0;z-index:99;background:white;border-bottom:1px solid var(--border);padding:20px 24px;flex-direction:column}
+.mob-nav.open{display:flex}
+.mob-nav a{color:var(--mid);text-decoration:none;font-size:16px;font-weight:500;padding:13px 0;border-bottom:1px solid var(--border);display:block}
+.mob-nav .mcta{margin-top:12px;background:var(--ink);color:white;text-align:center;border-radius:8px;padding:13px;font-weight:500;border-bottom:none}
+
+/* ── HERO ── */
+.hero{padding:140px 60px 100px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+.hero::before{content:'';position:absolute;top:80px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,82,255,0.05),transparent 65%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);border-radius:4px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,4.5vw,62px);font-weight:400;line-height:1.1;letter-spacing:-1.5px;color:var(--ink);margin-bottom:22px}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:17px;color:var(--mid);line-height:1.8;margin-bottom:36px;max-width:460px;font-weight:400}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-dark{background:var(--ink);color:white;padding:13px 28px;border-radius:8px;font-weight:500;font-size:15px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.25s;text-decoration:none;display:inline-block}
+.btn-dark:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,14,26,0.2)}
+.btn-link{color:var(--mid);font-size:15px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color 0.2s}
+.btn-link:hover{color:var(--ink)}
+.btn-link::after{content:'→';transition:transform 0.2s}
+.btn-link:hover::after{transform:translateX(3px)}
+.hero-right-wrap{position:relative}
+/* Hero visual — live dashboard mockup */
+.hero-dash{background:var(--white);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden}
+.hd-topbar{background:var(--off);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:8px}
+.hd-dot{width:10px;height:10px;border-radius:50%}
+.hd-title{font-size:12px;color:var(--muted);margin-left:8px;font-weight:500}
+.hd-body{padding:20px}
+.hd-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.hd-s{background:var(--off);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.hd-s-num{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);line-height:1}
+.hd-s-num.green{color:var(--green)}
+.hd-s-label{font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px}
+.hd-feed-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px}
+.hd-txn{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:var(--white);border:1px solid var(--border);margin-bottom:8px;font-size:13px}
+.hd-txn:last-child{margin-bottom:0}
+.hd-txn-left{display:flex;align-items:center;gap:10px}
+.hd-txn-flag{width:22px;height:22px;border-radius:50%;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.hd-txn-info{}
+.hd-txn-name{font-weight:500;color:var(--ink);line-height:1.2}
+.hd-txn-meta{font-size:11px;color:var(--muted)}
+.hd-txn-amount{font-weight:600;color:var(--ink)}
+.hd-txn-badge{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--green-pale);color:var(--green);font-weight:600;margin-left:6px}
+.hd-chart{margin-top:14px;background:var(--off);border:1px solid var(--border);border-radius:10px;padding:14px}
+.hd-chart-label{font-size:11px;color:var(--muted);margin-bottom:10px;font-weight:500}
+.hd-bars{display:flex;gap:6px;align-items:flex-end;height:48px}
+.hd-bar{flex:1;border-radius:3px 3px 0 0;transition:height 0.5s ease}
+
+/* ── VALUE PROPS — 3-column ── */
+.value-section{background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 60px}
+.value-inner{max-width:1200px;margin:0 auto}
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.val-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:32px;box-shadow:var(--shadow-sm);transition:all 0.3s;position:relative;overflow:hidden}
+.val-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#60A5FA);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.val-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.val-card:hover::before{transform:scaleX(1)}
+.val-icon{width:44px;height:44px;border-radius:10px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px}
+.val-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:10px;letter-spacing:-0.3px}
+.val-desc{font-size:14px;color:var(--mid);line-height:1.75}
+
+/* ── HOW IT WORKS — sticky scroll ── */
+.how-section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.how-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.how-sticky{position:sticky;top:100px}
+.how-steps{display:flex;flex-direction:column;gap:0}
+.how-step{padding:28px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all 0.25s}
+.how-step:last-child{border-bottom:none}
+.how-step-num{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;transition:color 0.2s}
+.how-step.active .how-step-num{color:var(--blue)}
+.how-step-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;color:var(--muted);margin-bottom:0;letter-spacing:-0.3px;transition:color 0.2s}
+.how-step.active .how-step-title{color:var(--ink)}
+.how-step-desc{font-size:14px;color:var(--mid);line-height:1.75;margin-top:10px;max-height:0;overflow:hidden;transition:max-height 0.4s ease,opacity 0.3s;opacity:0}
+.how-step.active .how-step-desc{max-height:120px;opacity:1}
+.how-visuals{display:flex;flex-direction:column;gap:20px}
+.how-visual{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:var(--shadow);opacity:0.3;transform:scale(0.97);transition:all 0.4s;display:none}
+.how-visual.active{opacity:1;transform:scale(1);display:block}
+.hv-tag{font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.hv-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.3px}
+.hv-desc{font-size:14px;color:var(--mid);line-height:1.75}
+.hv-code{background:var(--ink);color:#A5F3FC;font-family:monospace;font-size:12px;border-radius:8px;padding:16px 18px;margin-top:16px;line-height:1.9}
+.hv-code .dim{color:rgba(255,255,255,0.3)}
+.hv-code .ok{color:#6EE7B7}
+.hv-check-list{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.hv-check{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mid)}
+.hv-check::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;text-align:center;line-height:20px}
+
+/* ── BENEFITS ── */
+.benefits-section{background:var(--ink);padding:100px 60px;position:relative;overflow:hidden}
+.benefits-section::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(10,82,255,0.15),transparent 65%);pointer-events:none}
+.benefits-inner{max-width:1200px;margin:0 auto;position:relative}
+.benefits-inner h2{color:white}
+.benefits-inner h2 em{color:#93C5FD;font-style:italic}
+.benefits-inner .section-sub{color:rgba(255,255,255,0.5)}
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:52px}
+.ben-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:36px;transition:all 0.3s}
+.ben-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(10,82,255,0.35);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.ben-card.wide{grid-column:span 2}
+.bc-icon{font-size:28px;margin-bottom:16px;display:block}
+.bc-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;color:white;margin-bottom:10px;letter-spacing:-0.3px}
+.bc-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.75}
+.bc-highlight{display:inline-flex;align-items:center;gap:6px;background:rgba(10,82,255,0.15);border:1px solid rgba(10,82,255,0.3);border-radius:6px;padding:4px 12px;font-size:12px;color:#93C5FD;font-weight:500;margin-top:14px}
+
+/* ── UPTIME BAND ── */
+.uptime-band{background:var(--green-pale);border-top:1px solid rgba(5,150,105,0.15);border-bottom:1px solid rgba(5,150,105,0.15);padding:48px 60px}
+.uptime-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:center}
+.up-text{}
+.up-label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.up-title{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);letter-spacing:-0.5px;line-height:1.2}
+.up-desc{font-size:14px;color:var(--mid);line-height:1.7;margin-top:8px}
+.up-bars{display:flex;flex-direction:column;gap:6px}
+.up-bar-row{display:flex;align-items:center;gap:10px}
+.up-bar-label{font-size:11px;color:var(--mid);width:80px;flex-shrink:0}
+.up-bar-track{flex:1;height:6px;background:rgba(5,150,105,0.12);border-radius:3px;overflow:hidden}
+.up-bar-fill{height:100%;border-radius:3px;background:var(--green);animation:barGrow 1.5s ease both}
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+.up-dot-grid{display:flex;flex-wrap:wrap;gap:4px}
+.up-dot{width:12px;height:12px;border-radius:2px;background:var(--green);opacity:0.7;transition:opacity 0.2s}
+.up-dot.fail{background:#FCA5A5;opacity:0.5}
+
+/* ── GET STARTED ── */
+.onboard-section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.onboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.ob-step{padding:40px 32px;border-right:1px solid var(--border);position:relative;transition:background 0.25s}
+.ob-step:last-child{border-right:none}
+.ob-step:hover{background:var(--off)}
+.ob-num{font-family:'DM Serif Display',serif;font-size:52px;color:var(--border2);line-height:1;margin-bottom:20px}
+.ob-icon{font-size:28px;margin-bottom:14px;display:block}
+.ob-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.3px}
+.ob-desc{font-size:14px;color:var(--mid);line-height:1.75}
+.ob-time{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--blue);font-weight:500;margin-top:14px}
+
+/* ── SHARED ── */
+.stag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);border-radius:4px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--blue);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:18px}
+h2{font-family:'DM Serif Display',serif;font-size:clamp(30px,3.5vw,50px);font-weight:400;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;color:var(--ink)}
+h2 em{font-style:italic;color:var(--blue)}
+.section-sub{font-size:16px;color:var(--mid);line-height:1.8;max-width:500px;margin-bottom:0}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--off);border-top:1px solid var(--border)}
+.contact-inner{max-width:1200px;margin:0 auto;padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info{margin-top:36px;display:flex;flex-direction:column;gap:14px}
+.ci-row{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--white);border:1px solid var(--border);border-radius:12px;text-decoration:none;box-shadow:var(--shadow-sm);transition:all 0.2s}
+.ci-row:hover{border-color:var(--blue);transform:translateX(4px);box-shadow:var(--shadow)}
+.ci-icon{width:40px;height:40px;border-radius:9px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ci-type{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.ci-label{font-size:15px;color:var(--ink);font-weight:500}
+.ci-arrow{margin-left:auto;color:var(--blue);font-size:16px;transition:transform 0.2s}
+.ci-row:hover .ci-arrow{transform:translateX(4px)}
+.c-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:44px;box-shadow:var(--shadow)}
+.form-title{font-family:'DM Serif Display',serif;font-size:28px;color:var(--ink);margin-bottom:6px;letter-spacing:-0.5px}
+.form-sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--mid);margin-bottom:6px;letter-spacing:0.2px}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--off);border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border 0.2s;-webkit-appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:var(--white)}
+.fg select option{background:var(--white)}
+.fg textarea{height:88px;resize:none}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sub-btn{width:100%;background:var(--ink);color:white;padding:14px;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;border:none;cursor:pointer;transition:all 0.2s;margin-top:4px}
+.sub-btn:hover{background:var(--ink2);box-shadow:0 6px 24px rgba(10,14,26,0.2)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:48px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:20px;color:white}
+.footer-logo span{color:#93C5FD}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:white}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links,.nav-actions{display:none}
+  .hamburger{display:flex}
+  .hero{grid-template-columns:1fr;padding:110px 20px 60px;gap:48px}
+  .hero::before{display:none}
+  .value-section{padding:64px 20px}
+  .value-grid{grid-template-columns:1fr;gap:14px}
+  .how-section{padding:64px 20px}
+  .how-layout{grid-template-columns:1fr}
+  .how-sticky{position:static}
+  .benefits-section{padding:64px 20px}
+  .ben-grid{grid-template-columns:1fr}
+  .ben-card.wide{grid-column:auto}
+  .uptime-band{padding:48px 20px}
+  .uptime-inner{grid-template-columns:1fr;gap:32px}
+  .onboard-section{padding:64px 20px}
+  .onboard-grid{grid-template-columns:1fr;border-radius:12px}
+  .ob-step{border-right:none;border-bottom:1px solid var(--border)}
+  .ob-step:last-child{border-bottom:none}
+  .contact-inner{grid-template-columns:1fr;gap:40px;padding:64px 20px}
+  .c-form{padding:24px 20px}
+  .fg-row{grid-template-columns:1fr}
+  footer{padding:32px 20px;flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
 <body>
-<div class="glow" aria-hidden="true"></div>
-<header><div class="container"><nav class="nav glass" aria-label="Primary navigation"><a class="brand" href="#top"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M6 17V7.5C6 6.67 6.67 6 7.5 6h4.2c3.2 0 5.3 1.77 5.3 4.6 0 2.84-2.1 4.9-5.3 4.9H9.8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M9.5 10h2.2c1.12 0 1.8.48 1.8 1.38 0 .9-.68 1.42-1.8 1.42H9.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>PROBNK</a><button class="menu" id="menu" aria-label="Open menu"><svg width="21" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="links" id="links"><a href="#capabilities">Capabilities</a><a href="#infrastructure">Infrastructure</a><a href="#why">Why PROBNK</a><a class="cta" href="#contact">Contact us</a></div></nav></div></header>
-<main id="top">
-<section class="hero"><canvas id="network" aria-hidden="true"></canvas><div class="orb" aria-hidden="true"></div><div class="container"><div class="hero-copy reveal"><span class="eyebrow">Payment infrastructure for regulated iGaming</span><h1>Fiat in.<br><span class="gradient">Digital value out.</span></h1><p>PROBNK connects regulated iGaming merchants to fiat-to-crypto on-ramp infrastructure, payment orchestration, PSP-style operations, reconciliation and responsive merchant support.</p><div class="actions"><a href="#contact" class="btn">Talk to our team <span>→</span></a><a href="#infrastructure" class="btn2">Explore the infrastructure</a></div><div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.7-2.8 8.2-7 10-4.2-1.8-7-5.3-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8"/></svg>Regulated merchant focus</span><span class="chip">API-first routing</span><span class="chip">Operational reconciliation</span></div></div><aside class="console"><div class="console-top"><div class="dots"><i></i><i></i><i></i></div><div class="live">INFRASTRUCTURE LIVE</div></div><div class="row"><b>Payment orchestration</b><span class="signal">Active</span></div><div class="row"><b>Fiat → stablecoin route</b><span>Configured</span></div><div class="row"><b>Reconciliation engine</b><span>Synced</span></div><div class="row"><b>Merchant support</b><span>Connected</span></div></aside></div></section>
-<section id="capabilities"><div class="container"><div class="head reveal"><span class="eyebrow">Core capabilities</span><h2>Infrastructure built around the merchant flow.</h2><p>One operating layer for payment access, transaction routing, stablecoin conversion, reconciliation and merchant-facing support.</p></div><div class="grid">
-<article class="card wide glass tilt reveal"><div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h11M4 12h16M9 17h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m14 4 3 3-3 3M10 14l-3 3 3 3" stroke="currentColor" stroke-width="1.8"/></svg></div><h3>Fiat On-Ramp to Crypto</h3><p>Infrastructure for converting collected fiat value into stablecoins as part of the merchant settlement flow — not a retail crypto-purchase experience.</p><div class="mini-flow"><span class="node">Fiat collection</span><span class="line"></span><span class="node">Conversion layer</span><span class="line"></span><span class="node">Stablecoin settlement</span></div></article>
-<article class="card small glass tilt reveal"><div class="icon">↗</div><h3>Payment Orchestration</h3><p>Route transactions across connected providers and payment methods through a unified operating layer.</p></article>
-<article class="card glass tilt reveal"><div class="icon">PSP</div><h3>PSP-Style Operations</h3><p>Merchant onboarding, provider coordination, transaction oversight and settlement management within one operational framework.</p></article>
-<article class="card glass tilt reveal"><div class="icon">✓</div><h3>Reconciliation</h3><p>Align payment records, provider reporting, conversion events and merchant settlement data with a clear operational view.</p></article>
-<article class="card glass tilt reveal"><div class="icon">24/7</div><h3>Merchant Support</h3><p>Responsive operational support across onboarding, payment performance, reconciliation and settlement-related queries.</p></article>
-</div></div></section>
-<section id="infrastructure"><div class="container arch"><div class="arch-copy reveal"><span class="eyebrow">Infrastructure model</span><h2>One control layer across the transaction lifecycle.</h2><p>PROBNK sits between the merchant environment and connected financial infrastructure, coordinating payment activity, conversion, reconciliation and merchant operations.</p><div class="bullets"><div class="bullet"><i>✓</i><span>Designed for regulated online and iGaming merchant use cases.</span></div><div class="bullet"><i>✓</i><span>Supports fiat collection followed by stablecoin conversion and settlement.</span></div><div class="bullet"><i>✓</i><span>Commercial and operational management through the PROBNK platform.</span></div><div class="bullet"><i>✓</i><span>Clear separation between merchant operations and underlying infrastructure providers.</span></div></div></div><div class="panel glass reveal"><div class="flow"><div class="flow-row"><div class="flow-node"><div class="flow-icon">01</div><div><b>Merchant</b><small>Regulated online business</small></div></div><div class="flow-node"><div class="flow-icon">02</div><div><b>Customer payment</b><small>Transaction initiation</small></div></div><div class="flow-node"><div class="flow-icon">03</div><div><b>Payment Processing Infrastructure</b><small>Fiat collection and transaction processing</small></div></div></div><div class="connection"></div><div class="flow-row center"><div class="flow-node core"><div class="flow-icon">P</div><div><b>PROBNK orchestration layer</b><small>Routing · operations · reconciliation · support</small></div></div></div><div class="connection"></div><div class="flow-row"><div class="flow-node"><div class="flow-icon">04</div><div><b>Conversion</b><small>Fiat to stablecoin</small></div></div><div class="flow-node"><div class="flow-icon">05</div><div><b>Wallet infrastructure</b><small>Digital asset operations</small></div></div><div class="flow-node"><div class="flow-icon">06</div><div><b>Merchant settlement</b><small>Stablecoin delivery</small></div></div></div></div></div></div></section>
-<section><div class="container"><div class="strip glass reveal"><div class="metric"><strong>API-first</strong><span>Connect payment processing, conversion and wallet infrastructure.</span></div><div class="metric"><strong>PSP-style</strong><span>Merchant-facing operations on a coordinated provider stack.</span></div><div class="metric"><strong>Stablecoin</strong><span>Convert collected fiat value into digital settlement rails.</span></div><div class="metric"><strong>Reconciled</strong><span>Oversight across payments, conversion and settlement records.</span></div></div></div></section>
-<section id="why"><div class="container"><div class="head reveal"><span class="eyebrow">Why PROBNK</span><h2>Serious infrastructure. Human operational support.</h2><p>Technology is only part of the payment stack. PROBNK combines infrastructure with active operational management for complex merchant environments.</p></div><div class="why"><article class="reveal"><span class="num">01 / FOCUS</span><h3>Built around regulated merchants</h3><p>Infrastructure and operating processes designed for complex payment and settlement requirements.</p></article><article class="reveal"><span class="num">02 / CONTROL</span><h3>One operational view</h3><p>Coordinate providers, conversion activity, reconciliation and support through a single merchant-facing layer.</p></article><article class="reveal"><span class="num">03 / SUPPORT</span><h3>Direct, responsive assistance</h3><p>Practical support for onboarding, transaction operations, reconciliation and settlement processes.</p></article></div></div></section>
-<section id="contact"><div class="container"><div class="contact reveal"><div><span class="eyebrow">Contact us</span><h2>Let’s build the right payment flow.</h2><p>Speak with our team about fiat-to-crypto on-ramp infrastructure, payment orchestration, PSP-style operations and merchant settlement requirements.</p><a class="email" href="mailto:sales@probnk.com">sales@probnk.com →</a></div><form class="form" id="form"><label for="name">Name</label><input id="name" required placeholder="Your name"><label for="company">Company</label><input id="company" placeholder="Company name"><label for="message">How can we help?</label><textarea id="message" required placeholder="Tell us about your payment requirements"></textarea><button class="submit" type="submit">Contact PROBNK</button></form></div></div></section>
-</main>
-<footer><div class="container foot"><div class="brand"><span class="mark">P</span>PROBNK</div><div>Payment infrastructure for regulated online merchants.</div><div class="foot-links"><a href="mailto:sales@probnk.com">sales@probnk.com</a><span>© <span id="year"></span> PROBNK</span></div></div></footer>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Pro<span>Bnk</span></a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#onboard">Get Started</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#contact" class="nav-login">Contact sales</a>
+    <a href="#onboard" class="nav-cta">Get started</a>
+  </div>
+  <button class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#how" onclick="closeMenu()">How It Works</a>
+  <a href="#benefits" onclick="closeMenu()">Benefits</a>
+  <a href="#onboard" onclick="closeMenu()">Get Started</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="mailto:sales@probnk.com" class="mcta" onclick="closeMenu()">Contact Sales →</a>
+</div>
+
+<!-- HERO -->
+<div style="padding-top:68px">
+<div class="hero">
+  <div>
+    <div class="hero-tag reveal">Payment Infrastructure</div>
+    <h1 class="reveal d1">Financial infrastructure<br>to <em>grow your revenue</em></h1>
+    <p class="hero-sub reveal d2">ProBnk gives businesses and merchants a single, reliable platform to accept payments, optimise revenue, and scale globally — with zero complexity and full transparency.</p>
+    <div class="hero-actions reveal d3">
+      <a href="#onboard" class="btn-dark">Get started →</a>
+      <a href="#contact" class="btn-link">Contact sales</a>
+    </div>
+  </div>
+  <div class="hero-right-wrap reveal-r d2">
+    <div class="hero-dash">
+      <div class="hd-topbar">
+        <div class="hd-dot" style="background:#FF5F57"></div>
+        <div class="hd-dot" style="background:#FEBC2E"></div>
+        <div class="hd-dot" style="background:#28C840"></div>
+        <div class="hd-title">ProBnk Dashboard</div>
+      </div>
+      <div class="hd-body">
+        <div class="hd-summary">
+          <div class="hd-s"><div class="hd-s-num green" id="heroRev">£0</div><div class="hd-s-label">Revenue today</div></div>
+          <div class="hd-s"><div class="hd-s-num" id="heroAcc">97.4%</div><div class="hd-s-label">Accept rate</div></div>
+          <div class="hd-s"><div class="hd-s-num" style="color:var(--blue)">Live</div><div class="hd-s-label">System status</div></div>
+        </div>
+        <div class="hd-feed-title">Recent payments</div>
+        <div id="txnFeed">
+          <div class="hd-txn"><div class="hd-txn-left"><div class="hd-txn-flag">🇬🇧</div><div class="hd-txn-info"><div class="hd-txn-name">Acme Ltd.</div><div class="hd-txn-meta">Card · 2s ago</div></div></div><div><span class="hd-txn-amount">£4,200</span><span class="hd-txn-badge">Paid</span></div></div>
+          <div class="hd-txn"><div class="hd-txn-left"><div class="hd-txn-flag">🇩🇪</div><div class="hd-txn-info"><div class="hd-txn-name">Müller GmbH</div><div class="hd-txn-meta">SEPA · 8s ago</div></div></div><div><span class="hd-txn-amount">€11,500</span><span class="hd-txn-badge">Paid</span></div></div>
+          <div class="hd-txn"><div class="hd-txn-left"><div class="hd-txn-flag">🇺🇸</div><div class="hd-txn-info"><div class="hd-txn-name">Vertex Corp</div><div class="hd-txn-meta">Wire · 14s ago</div></div></div><div><span class="hd-txn-amount">$8,900</span><span class="hd-txn-badge">Paid</span></div></div>
+        </div>
+        <div class="hd-chart">
+          <div class="hd-chart-label">Today's revenue</div>
+          <div class="hd-bars" id="heroBars"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- VALUE PROPS -->
+<div class="value-section">
+  <div class="value-inner">
+    <div style="text-align:center;max-width:640px;margin:0 auto">
+      <div class="reveal"><div class="stag">Why ProBnk</div></div>
+      <h2 class="reveal d1" style="text-align:center">Built for businesses that<br><em>can't afford friction</em></h2>
+      <p class="section-sub reveal d2" style="margin:0 auto;text-align:center">Every feature we build starts from one question: does this help our clients accept more payments and grow their revenue?</p>
+    </div>
+    <div class="value-grid" style="margin-top:48px">
+      <div class="val-card reveal d1">
+        <div class="val-icon">🌐</div>
+        <div class="val-title">Global reach, local experience</div>
+        <div class="val-desc">Your customers pay the way they prefer — card, bank transfer, or local method. ProBnk handles the complexity behind the scenes, so your checkout always feels native.</div>
+      </div>
+      <div class="val-card reveal d2">
+        <div class="val-icon">📈</div>
+        <div class="val-title">Higher acceptance, more revenue</div>
+        <div class="val-desc">Intelligent routing directs every transaction to the provider most likely to approve it. Fewer declines, more successful payments, and more revenue for your business.</div>
+      </div>
+      <div class="val-card reveal d3">
+        <div class="val-icon">🛡️</div>
+        <div class="val-title">Compliance you don't have to think about</div>
+        <div class="val-desc">Regulatory requirements are built into the platform. AML checks, KYC verification, and fraud screening happen automatically — keeping you compliant without slowing you down.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section" id="how">
+  <div class="reveal"><div class="stag">How It Works</div></div>
+  <h2 class="reveal d1">From integration<br>to <em>first payment</em></h2>
+  <p class="section-sub reveal d2" style="margin-bottom:52px">ProBnk is designed to be operational quickly. Whether you're a developer integrating an API or a business owner connecting via our dashboard — getting started is straightforward.</p>
+  <div class="how-layout">
+    <div class="how-sticky">
+      <div class="how-steps">
+        <div class="how-step active" onclick="setStep(0)">
+          <div class="how-step-num">Step 01</div>
+          <div class="how-step-title">Connect your account</div>
+          <div class="how-step-desc">Sign up, verify your business, and connect to ProBnk in minutes. Our onboarding team guides you through every step, and our API documentation covers every integration pattern.</div>
+        </div>
+        <div class="how-step" onclick="setStep(1)">
+          <div class="how-step-num">Step 02</div>
+          <div class="how-step-title">Configure your flows</div>
+          <div class="how-step-desc">Choose which payment methods to accept, set your routing preferences, and configure how funds are managed. Everything is adjustable from a single dashboard.</div>
+        </div>
+        <div class="how-step" onclick="setStep(2)">
+          <div class="how-step-num">Step 03</div>
+          <div class="how-step-title">Accept and optimise</div>
+          <div class="how-step-desc">Go live and watch your acceptance rates in real time. ProBnk continuously optimises routing based on performance data, so your revenue improves automatically over time.</div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visuals">
+      <div class="how-visual active" id="hv0">
+        <div class="hv-tag">Step 01</div>
+        <div class="hv-title">Connected in minutes, not weeks</div>
+        <div class="hv-desc">ProBnk's onboarding is designed for speed. Most businesses are processing live transactions within the same week they sign up.</div>
+        <div class="hv-check-list">
+          <div class="hv-check">Business verification via a simple online form</div>
+          <div class="hv-check">Sandbox environment available from day one</div>
+          <div class="hv-check">Dedicated onboarding support included</div>
+          <div class="hv-check">No long contracts or setup fees</div>
+        </div>
+      </div>
+      <div class="how-visual" id="hv1">
+        <div class="hv-tag">Step 02</div>
+        <div class="hv-title">One dashboard. Full control.</div>
+        <div class="hv-desc">Manage payment methods, routing rules, and payout schedules from a single interface — or via API for full programmatic control.</div>
+        <div class="hv-code">
+          <span class="dim">// Configure your routing rules</span><br>
+          <span style="color:#C4B5FD">const</span> <span style="color:#93C5FD">route</span> = probnk.routing({<br>
+          &nbsp;&nbsp;prefer: <span style="color:#FDE68A">"highest_acceptance"</span>,<br>
+          &nbsp;&nbsp;fallback: <span style="color:#FDE68A">"auto"</span>,<br>
+          &nbsp;&nbsp;currencies: [<span style="color:#FDE68A">"GBP","EUR","USD"</span>]<br>
+          });<br>
+          <span class="ok">// ✓ Active across all transactions</span>
+        </div>
+      </div>
+      <div class="how-visual" id="hv2">
+        <div class="hv-tag">Step 03</div>
+        <div class="hv-title">Revenue that grows itself</div>
+        <div class="hv-desc">ProBnk's routing engine learns from your transaction data. As it processes more payments, it becomes better at choosing the right provider at the right moment.</div>
+        <div class="hv-check-list">
+          <div class="hv-check">Real-time acceptance rate monitoring</div>
+          <div class="hv-check">Automatic provider failover — zero downtime</div>
+          <div class="hv-check">Monthly performance reports delivered to you</div>
+          <div class="hv-check">Continuous optimisation, no manual input needed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFITS — dark section -->
+<div class="benefits-section" id="benefits">
+  <div class="benefits-inner">
+    <div class="reveal"><div class="stag" style="background:rgba(147,197,253,0.1);border-color:rgba(147,197,253,0.2);color:#93C5FD">Benefits</div></div>
+    <h2 class="reveal d1" style="color:white">What ProBnk<br><em>does for your business</em></h2>
+    <p class="section-sub reveal d2" style="margin-bottom:52px;color:rgba(255,255,255,0.45)">We don't just process payments — we make them work harder for your business. Every feature is built to help you accept more, lose less, and scale further.</p>
+    <div class="ben-grid">
+      <div class="ben-card wide reveal">
+        <span class="bc-icon">📈</span>
+        <div class="bc-title">Optimise your revenue — automatically</div>
+        <div class="bc-desc">Payment declines are silent revenue leaks. ProBnk's intelligent routing ensures every transaction goes to the provider most likely to approve it, based on real-time performance data, card type, geography, and issuer behaviour. Businesses on ProBnk typically see a meaningful uplift in acceptance rates — without changing anything on their end.</div>
+        <div class="bc-highlight">↑ Higher acceptance rate from day one</div>
+      </div>
+      <div class="ben-card reveal d1">
+        <span class="bc-icon">🌍</span>
+        <div class="bc-title">Scale globally without complexity</div>
+        <div class="bc-desc">Expanding internationally shouldn't mean rebuilding your payments stack. ProBnk gives you access to local payment methods, multi-currency processing, and regional acquiring networks — all through the same integration you use today.</div>
+        <div class="bc-highlight">→ Enter new markets in days, not months</div>
+      </div>
+      <div class="ben-card reveal d2">
+        <span class="bc-icon">⚡</span>
+        <div class="bc-title">Always on. Zero downtime.</div>
+        <div class="bc-desc">Your revenue doesn't stop — and neither does ProBnk. When a provider experiences issues, we automatically reroute to a healthy one. Your customers never see a failed checkout. Your operations team never gets an alert at 3am.</div>
+        <div class="bc-highlight">✓ Continuous uptime, automatic failover</div>
+      </div>
+      <div class="ben-card reveal d3">
+        <span class="bc-icon">🔍</span>
+        <div class="bc-title">Full visibility. Clear data.</div>
+        <div class="bc-desc">Know exactly where your revenue is coming from, where it's being lost, and how to recover it. ProBnk's dashboard gives your finance and product teams the data they need to make informed decisions — in real time, not next month.</div>
+        <div class="bc-highlight">→ Decisions backed by live data</div>
+      </div>
+      <div class="ben-card reveal d4">
+        <span class="bc-icon">🤝</span>
+        <div class="bc-title">A better experience for your customers</div>
+        <div class="bc-desc">When payments work seamlessly, customers trust your brand. ProBnk ensures that every customer — regardless of their country, card, or preferred payment method — gets a checkout experience that feels smooth and professional.</div>
+        <div class="bc-highlight">→ Fewer abandoned checkouts</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UPTIME BAND -->
+<div class="uptime-band">
+  <div class="uptime-inner">
+    <div class="up-text reveal-l">
+      <div class="up-label">Reliability</div>
+      <div class="up-title">Always available.<br>No exceptions.</div>
+      <div class="up-desc">ProBnk is built on redundant infrastructure across multiple regions. When one provider goes down, traffic reroutes automatically. Your customers never notice.</div>
+    </div>
+    <div class="reveal d2">
+      <div class="up-bars">
+        <div class="up-bar-row"><div class="up-bar-label">Payments API</div><div class="up-bar-track"><div class="up-bar-fill" style="--w:100%"></div></div></div>
+        <div class="up-bar-row"><div class="up-bar-label">Routing engine</div><div class="up-bar-track"><div class="up-bar-fill" style="--w:100%"></div></div></div>
+        <div class="up-bar-row"><div class="up-bar-label">Dashboard</div><div class="up-bar-track"><div class="up-bar-fill" style="--w:99%"></div></div></div>
+        <div class="up-bar-row"><div class="up-bar-label">Webhooks</div><div class="up-bar-track"><div class="up-bar-fill" style="--w:100%"></div></div></div>
+      </div>
+      <div style="font-size:12px;color:var(--green);font-weight:600;margin-top:14px">● All systems operational</div>
+    </div>
+    <div class="reveal-r d3">
+      <div style="font-size:12px;color:var(--mid);margin-bottom:10px;font-weight:500">Uptime — last 90 days</div>
+      <div class="up-dot-grid" id="uptimeDots"></div>
+      <div style="font-size:12px;color:var(--green);font-weight:600;margin-top:12px">Full availability across all services</div>
+    </div>
+  </div>
+</div>
+
+<!-- GET STARTED -->
+<div class="onboard-section" id="onboard">
+  <div style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="reveal"><div class="stag">Get Started</div></div>
+    <h2 class="reveal d1">Up and running<br>in <em>three steps</em></h2>
+    <p class="section-sub reveal d2" style="margin:0 auto">No long procurement cycles. No heavyweight integrations. ProBnk is designed to get your business processing payments as quickly as possible.</p>
+  </div>
+  <div class="onboard-grid">
+    <div class="ob-step reveal d1">
+      <div class="ob-num">01</div>
+      <span class="ob-icon">📋</span>
+      <div class="ob-title">Tell us about your business</div>
+      <div class="ob-desc">Fill in a short form with your business details and payment requirements. Our team reviews your application and comes back to you with a tailored proposal.</div>
+      <div class="ob-time">⏱ Takes 5 minutes</div>
+    </div>
+    <div class="ob-step reveal d2">
+      <div class="ob-num">02</div>
+      <span class="ob-icon">🔧</span>
+      <div class="ob-title">Integrate and test</div>
+      <div class="ob-desc">Connect to ProBnk via API or our no-code dashboard. Use your sandbox environment to test all payment flows before going live. Our team is available to help.</div>
+      <div class="ob-time">⏱ Most clients live within a week</div>
+    </div>
+    <div class="ob-step reveal d3">
+      <div class="ob-num">03</div>
+      <span class="ob-icon">🚀</span>
+      <div class="ob-title">Go live and grow</div>
+      <div class="ob-desc">Flip to production and start accepting payments. ProBnk monitors performance in real time and optimises your setup continuously — so your acceptance rates improve over time.</div>
+      <div class="ob-time">⏱ Revenue starts from day one</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="reveal"><div class="stag">Contact Us</div></div>
+      <h2 class="reveal d1">Ready to optimise<br>your <em>revenue?</em></h2>
+      <p class="section-sub reveal d2">Our sales team works with businesses of all sizes — from fast-growing merchants to established enterprises. Tell us about your needs and we'll come back with a proposal.</p>
+      <div class="contact-info reveal d3">
+        <a class="ci-row" href="mailto:sales@probnk.com">
+          <div class="ci-icon">✉️</div>
+          <div><div class="ci-type">Email</div><div class="ci-label">sales@probnk.com</div></div>
+          <div class="ci-arrow">→</div>
+        </a>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow-sm)">
+          <div style="font-size:14px;font-weight:600;color:var(--green);margin-bottom:6px">⏱ We respond within 24 hours</div>
+          <div style="font-size:13px;color:var(--mid);line-height:1.65">No obligation. Tell us about your business and we'll come back with a clear, transparent proposal tailored to your requirements.</div>
+        </div>
+      </div>
+    </div>
+    <div class="c-form reveal-r d2">
+      <div class="form-title">Get in touch</div>
+      <div class="form-sub">Speak to our sales team about your business.</div>
+      <div class="fg-row">
+        <div class="fg"><label>First name</label><input type="text" placeholder="John"></div>
+        <div class="fg"><label>Last name</label><input type="text" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label>Business email</label><input type="email" placeholder="you@company.com"></div>
+      <div class="fg"><label>Company name</label><input type="text" placeholder="Acme Ltd."></div>
+      <div class="fg"><label>Business type</label>
+        <select>
+          <option value="">Select your type</option>
+          <option>E-Commerce</option>
+          <option>Marketplace</option>
+          <option>Enterprise</option>
+          <option>SaaS / Subscriptions</option>
+          <option>Financial Institution</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Tell us about your needs</label><textarea placeholder="Markets you operate in, current payment challenges, monthly volume range..."></textarea></div>
+      <button class="sub-btn" onclick="this.textContent='✓ Sent — we\'ll be in touch within 24 hours';this.style.background='#059669'">Send message →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Pro<span>Bnk</span></div>
+  <ul class="footer-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#onboard">Get Started</a></li>
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="mailto:sales@probnk.com">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 ProBnk. All rights reserved.</div>
+</footer>
+
 <script>
-const nav=document.querySelector('.nav'),menu=document.getElementById('menu'),links=document.getElementById('links'),glow=document.querySelector('.glow');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));menu.onclick=()=>links.classList.toggle('open');links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));document.querySelectorAll('.tilt').forEach(c=>{c.onpointermove=e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(850px) rotateX(${y*-5}deg) rotateY(${x*6}deg) translateY(-3px)`};c.onpointerleave=()=>c.style.transform=''});document.getElementById('form').onsubmit=e=>{e.preventDefault();const n=document.getElementById('name').value.trim(),c=document.getElementById('company').value.trim(),m=document.getElementById('message').value.trim(),s=encodeURIComponent(`PROBNK website enquiry${c?' — '+c:''}`),b=encodeURIComponent(`Name: ${n}\nCompany: ${c||'Not provided'}\n\nMessage:\n${m}`);location.href=`mailto:sales@probnk.com?subject=${s}&body=${b}`};document.getElementById('year').textContent=new Date().getFullYear();
-const canvas=document.getElementById('network'),ctx=canvas.getContext('2d');let pts=[],w=0,h=0,dpr=Math.min(devicePixelRatio||1,2),mouse={x:-9999,y:-9999};function resize(){const r=canvas.getBoundingClientRect();w=r.width;h=r.height;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.max(35,Math.min(80,Math.floor(w/18)));pts=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.7+.8}))}function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;const dx=p.x-mouse.x,dy=p.y-mouse.y,md=Math.hypot(dx,dy);if(md<150){p.x+=dx/Math.max(md,1)*.16;p.y+=dy/Math.max(md,1)*.16}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(89,65,190,.26)';ctx.fill()}for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<125){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(106,83,207,${.12*(1-d/125)})`;ctx.stroke()}}requestAnimationFrame(draw)}canvas.onpointermove=e=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top};canvas.onpointerleave=()=>mouse={x:-9999,y:-9999};addEventListener('resize',resize);resize();draw();
+// Mobile menu
+function toggleMenu(){document.getElementById('mobNav').classList.toggle('open');document.getElementById('ham').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobNav').classList.remove('open');document.getElementById('ham').classList.remove('open')}
+
+// Scroll reveal
+const revEls=document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');io.unobserve(x.target)}})},{threshold:0.1});
+revEls.forEach(el=>io.observe(el));
+
+// Hero bar chart
+const bars=document.getElementById('heroBars');
+if(bars){
+  const heights=[30,45,35,60,50,70,55,80,65,90,75,100];
+  heights.forEach((h,i)=>{
+    const b=document.createElement('div');
+    b.className='hd-bar';
+    b.style.cssText=`height:${h}%;background:${i===11?'#0A52FF':'#DBEAFE'};transition-delay:${i*0.06}s`;
+    bars.appendChild(b);
+  });
+}
+
+// Hero revenue counter
+let rev=12480;
+setInterval(()=>{
+  rev+=Math.floor(Math.random()*180+40);
+  const el=document.getElementById('heroRev');
+  if(el)el.textContent='£'+rev.toLocaleString();
+},2200);
+
+// Live transaction feed
+const txns=[
+  {flag:'🇫🇷',name:'Renault Group',method:'Wire',amt:'€22,000'},
+  {flag:'🇳🇱',name:'Philips B.V.',method:'SEPA',amt:'€6,400'},
+  {flag:'🇸🇬',name:'Marina Holdings',method:'Card',amt:'$15,200'},
+  {flag:'🇦🇺',name:'Kangaroo Media',method:'Card',amt:'A$9,800'},
+  {flag:'🇯🇵',name:'Tanaka Corp',method:'Wire',amt:'¥880,000'},
+  {flag:'🇨🇦',name:'Maple Ventures',method:'Card',amt:'C$7,300'},
+];
+const feed=document.getElementById('txnFeed');
+let ti=0,secs=0;
+setInterval(()=>{
+  secs+=3;
+  const t=txns[ti++%txns.length];
+  const el=document.createElement('div');
+  el.className='hd-txn';
+  el.innerHTML=`<div class="hd-txn-left"><div class="hd-txn-flag">${t.flag}</div><div class="hd-txn-info"><div class="hd-txn-name">${t.name}</div><div class="hd-txn-meta">${t.method} · just now</div></div></div><div><span class="hd-txn-amount">${t.amt}</span><span class="hd-txn-badge">Paid</span></div>`;
+  feed.insertBefore(el,feed.firstChild);
+  if(feed.children.length>3)feed.removeChild(feed.lastChild);
+},3000);
+
+// How it works tabs
+function setStep(i){
+  document.querySelectorAll('.how-step').forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  document.querySelectorAll('.how-visual').forEach((v,idx)=>v.classList.toggle('active',idx===i));
+}
+
+// Uptime dots
+const ud=document.getElementById('uptimeDots');
+if(ud){for(let i=0;i<90;i++){const d=document.createElement('div');d.className='up-dot';ud.appendChild(d)}}
+
+// Auto-advance how steps
+let step=0;
+setInterval(()=>{step=(step+1)%3;setStep(step)},4000);
 </script>
 </body>
 </html>
